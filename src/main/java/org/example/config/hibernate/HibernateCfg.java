@@ -1,4 +1,4 @@
-package org.example.config;
+package org.example.config.hibernate;
 
 import org.example.config.hibernate.pwd.my_pwd.SetPwd;
 import org.hibernate.SessionFactory;
