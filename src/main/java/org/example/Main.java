@@ -1,7 +1,23 @@
 package org.example;
 
+import org.example.config.hibernate.HibernateCfg;
+import org.example.repository.entities.CarPart;
+import org.example.repository.entities.Client;
+import org.example.repository.entities.Offer;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hello");
+        try (SessionFactory sessionFactory = HibernateCfg.getSessionFactory(
+                CarPart.class,
+                Offer.class,
+                Client.class
+            );
+             Session session = sessionFactory.openSession();
+        ){
+
+        }
+
     }
 }

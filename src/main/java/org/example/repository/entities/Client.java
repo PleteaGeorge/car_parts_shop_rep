@@ -1,10 +1,9 @@
 package org.example.repository.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -19,5 +18,8 @@ public class Client {
     private int phone;
     @NonNull
     private String name;
+    @OneToMany
+    @JoinColumn(name = "client_Id")
+    private List<Offer> offerList;
 
 }
