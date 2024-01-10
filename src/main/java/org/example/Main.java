@@ -1,7 +1,9 @@
 package org.example;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("hello");
+    public static final String PWD = "pwd";
+
+    public static getPwd(){
+        return PWD;
     }
 }

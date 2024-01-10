@@ -1,4 +1,4 @@
-package org.example.repository.entities;
+package org.example.repository.entities.entites;
 
 
 import jakarta.persistence.Entity;
@@ -22,7 +22,7 @@ import java.util.UUID;
             private double price;
             @NonNull
             private String name;
-            @NonNull
+
 }
 
 
