@@ -1,12 +1,11 @@
 package org.example.repository.entities;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 @Data
 @NoArgsConstructor
@@ -24,5 +23,9 @@ public class Client {
     private String name;
     @NonNull
     private String marca;
+    @OneToMany
+    @JoinColumn(name= "client_Id")
+   private List<Offer> offerList;
+
 
 }
