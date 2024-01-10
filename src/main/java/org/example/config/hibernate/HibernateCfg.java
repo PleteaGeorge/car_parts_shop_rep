@@ -13,14 +13,6 @@ public class HibernateCfg {
 
   private final static Configuration configuration;
 
-  private static Configuration getConfiguration() {
-    return configuration;
-  }
-
-  public static SessionFactory getSessionFactory() {
-    return configuration.buildSessionFactory();
-  }
-
   public static SessionFactory getSessionFactory(Class<?>... annotatedClasses) {
     for (Class<?> annotatedClass : annotatedClasses) {
       configuration.addAnnotatedClass(annotatedClass);

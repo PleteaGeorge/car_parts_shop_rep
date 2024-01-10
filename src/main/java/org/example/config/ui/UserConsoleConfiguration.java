@@ -10,7 +10,6 @@ import org.hibernate.SessionFactory;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Executor;
 
 public class UserConsoleConfiguration {
   static {
@@ -22,7 +21,6 @@ public class UserConsoleConfiguration {
   private final static Map<String, IFunctor> commands;
 
   private static void buildCommands() {
-    Executor
     commands.put("command", new IFunctor() {
       @Override
       public Session executeProvide() {
