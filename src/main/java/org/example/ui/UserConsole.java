@@ -2,6 +2,7 @@ package org.example.ui;
 
 import org.example.config.ui.IFunctor;
 import org.example.config.ui.UserConsoleConfiguration;
+import org.hibernate.Session;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -16,8 +17,8 @@ public class UserConsole {
   private UserConsole() {
     scanner = new Scanner(System.in);
     commands = UserConsoleConfiguration.getCommands();
-    exitCommand = "";
-    prompter = "";
+    exitCommand = UserConsoleConfiguration.EXIT_COMMAND;
+    prompter = UserConsoleConfiguration.PROMPTER;
   }
 
   public static UserConsole get() {
@@ -35,11 +36,11 @@ public class UserConsole {
     System.out.print(prompter + " ");
   }
 
-  public void run() {
+  public void run(Session session) {
     while (true) {
       showPrompter();
       final String command = scanner.nextLine().trim();
-      commands.get(command).executeProvide();
+      commands.get(command).execute();
       if (exitCommand.equals(command)) {
         break;
       }

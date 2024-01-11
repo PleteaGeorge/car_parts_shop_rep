@@ -1,10 +1,6 @@
 package org.example.config.ui;
 
+@FunctionalInterface
 public interface IFunctor {
-  default void execute() {
-  }
-
-  default Object executeProvide() {
-    return null;
-  }
+  void execute();
 }

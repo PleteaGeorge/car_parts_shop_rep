@@ -1,12 +1,6 @@
 package org.example.config.ui;
 
 import lombok.Getter;
-import org.example.config.hibernate.HibernateCfg;
-import org.example.repository.entities.CarPart;
-import org.example.repository.entities.Client;
-import org.example.repository.entities.Offer;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,19 +13,13 @@ public class UserConsoleConfiguration {
 
   @Getter
   private final static Map<String, IFunctor> commands;
+  public final static String EXIT_COMMAND = "exit";
+  public final static String PROMPTER = " Car Parts Store \ud83d\udE02 >";
 
   private static void buildCommands() {
-    commands.put("command", new IFunctor() {
+    commands.put(EXIT_COMMAND, new IFunctor() {
       @Override
-      public Session executeProvide() {
-        try (
-          SessionFactory sessionFactory = HibernateCfg.getSessionFactory(
-            CarPart.class,
-            Client.class,
-            Offer.class);
-        ) {
-          return sessionFactory.openSession();
-        }
+      public void execute() {
       }
     });
   }

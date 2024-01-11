@@ -1,14 +1,13 @@
 package org.example.repository.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -20,11 +19,12 @@ public class Offer {
   @GeneratedValue
   private UUID id;
   @NonNull
-  @Column(name = "client_id")
-  private UUID clientId;
-  @NonNull
-  @Column(name = "car_parts_id")
-  private UUID carPartsId;
-  @NonNull
   private Double amount;
+  @ManyToMany
+  @JoinTable(
+    name = "car_parts_to_offers",
+    joinColumns = @JoinColumn(name = "offer_id"),
+    inverseJoinColumns = @JoinColumn(name = "car_part_id")
+  )
+  private final List<CarPart> carParts = new ArrayList<>();
 }

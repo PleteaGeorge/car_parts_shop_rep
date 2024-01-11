@@ -1,8 +1,6 @@
 package org.example.repository.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
@@ -16,9 +14,13 @@ public class CarPart {
   @GeneratedValue
   private UUID id;
   @NonNull
-  private String name;
+  @Column(name = "oe_number")
+  private String oeNumber;
   @NonNull
   private Double price;
   @NonNull
-  private String marca;
+  private int stock;
+  @ManyToOne
+  @JoinColumn(name = "name_id")
+  private CarPartName name;
 }

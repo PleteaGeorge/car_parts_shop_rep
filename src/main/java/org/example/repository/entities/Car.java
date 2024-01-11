@@ -10,19 +10,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Entity(name = "clients")
-public class Client {
+@Data
+@Entity(name = "cars")
+public class Car {
   @Id
   @GeneratedValue
   private UUID id;
   @NonNull
-  private String name;
+  private String brand;
   @NonNull
-  private String phoneNumber;
+  private String model;
+  @NonNull
+  private Integer manufactureYear;
   @OneToMany
-  @JoinColumn(name = "client_id")
-  private final List<Offer> offers = new ArrayList<>();
+  @JoinColumn(name = "car_id")
+  private final List<CarPart> components = new ArrayList<>();
 }
