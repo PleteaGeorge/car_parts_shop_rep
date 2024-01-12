@@ -5,7 +5,6 @@ target/
 
 ### user ###
 .idea/
-/**/MyPwd.java
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
