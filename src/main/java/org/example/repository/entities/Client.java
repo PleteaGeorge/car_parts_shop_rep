@@ -3,6 +3,7 @@ package org.example.repository.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,11 +16,11 @@ public class Client {
     @GeneratedValue
     private UUID id;
     @NonNull
-    private int phone;
+    private int phoneNumber;
     @NonNull
     private String name;
     @OneToMany
-    @JoinColumn(name = "client_Id")
-    private List<Offer> offerList;
+    @JoinColumn(name = "client_id")
+    private final List<Offer> offerList = new ArrayList<>();
 
 }
