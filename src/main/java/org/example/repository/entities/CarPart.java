@@ -19,7 +19,7 @@ public class CarPart {
   @NonNull
   private Double price;
   @NonNull
-  private int stock;
+  private Integer stock;
   @ManyToOne
   @JoinColumn(name = "name_id")
   private CarPartName name;

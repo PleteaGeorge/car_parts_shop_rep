@@ -4,7 +4,7 @@ import org.example.config.hibernate.pwd.my_pwd.SetPwd;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class HibernateCfg {
+public class HibernateConfiguration {
   static {
     configuration = SetPwd.getConfigurationWithPwdProperty(
       new Configuration().configure("hibernate.cfg.xml")
@@ -14,7 +14,7 @@ public class HibernateCfg {
   private final static Configuration configuration;
 
   public static SessionFactory getSessionFactory(Class<?>... annotatedClasses) {
-    for (Class<?> annotatedClass : annotatedClasses) {
+    for (final Class<?> annotatedClass : annotatedClasses) {
       configuration.addAnnotatedClass(annotatedClass);
     }
     return configuration.buildSessionFactory();
