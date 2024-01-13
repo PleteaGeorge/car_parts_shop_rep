@@ -1,4 +1,4 @@
-package org.example.utils;
+package org.example.utils.populate_database;
 
 import org.example.config.app.Application;
 import org.example.repository.ClientRepository;
