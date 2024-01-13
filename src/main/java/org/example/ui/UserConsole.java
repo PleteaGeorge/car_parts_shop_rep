@@ -18,7 +18,7 @@ public class UserConsole {
 
   private UserConsole() {
     scanner = new Scanner(System.in);
-    commands = UserConsoleConfiguration.buildCommands();
+    commands = UserConsoleConfiguration.getCommands();
     exitCommand = UserConsoleConfiguration.getExitCommand();
     prompter = UserConsoleConfiguration.PROMPTER;
     unknownCommandFormat = UserConsoleConfiguration.UNKNOWN_COMMAND_FORMAT;

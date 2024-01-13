@@ -10,15 +10,24 @@ public class UserConsoleConfiguration {
   private final static String EXIT_COMMAND = "exit";
   public final static String PROMPTER = " Car Parts Store \ud83d\udE02 >";
   public final static String UNKNOWN_COMMAND_FORMAT = "unknown command '%s'; check the list";
+  private static Command exitCommand;
 
   public static Command getExitCommand() {
-    return new Command(EXIT_COMMAND);
+    if (null != exitCommand) {
+      return exitCommand;
+    }
+    synchronized (UserConsoleConfiguration.class) {
+      if (null == exitCommand) {
+        exitCommand = new Command(EXIT_COMMAND);
+      }
+    }
+    return exitCommand;
   }
 
-  public static Map<Command, Functor> buildCommands() {
+  public static Map<Command, Functor> getCommands() {
     final Map<Command, Functor> result = new HashMap<>();
     // EXIT_COMMAND
-    result.put(new Command(EXIT_COMMAND),
+    result.put(getExitCommand(),
       session -> System.out.println("Exiting...")
     );
     // <description>
