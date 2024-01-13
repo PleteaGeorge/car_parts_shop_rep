@@ -1,6 +1,5 @@
 package org.example.utils.populate_database;
 
-import org.example.config.app.Application;
 import org.example.repository.CarPartNameRepository;
 import org.example.repository.CarPartRepository;
 import org.example.repository.CarRepository;
@@ -12,13 +11,6 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class PopulateCarParts {
-  public static void main(String[] args) {
-    Application.start();
-    deleteExisting(Application.getSession());
-    populate(Application.getSession());
-    Application.terminate();
-  }
-
   public static void deleteExisting(Session session) {
     CarPartRepository carPartRepository = new CarPartRepository(session);
     carPartRepository.findAll().stream().map(CarPart::getId).forEach(carPartRepository::delete);

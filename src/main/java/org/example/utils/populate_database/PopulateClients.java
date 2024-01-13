@@ -1,18 +1,10 @@
 package org.example.utils.populate_database;
 
-import org.example.config.app.Application;
 import org.example.repository.ClientRepository;
 import org.example.repository.entities.Client;
 import org.hibernate.Session;
 
 public class PopulateClients {
-  public static void main(String[] args) {
-    Application.start();
-    deleteExisting(Application.getSession());
-    populate(Application.getSession());
-    Application.terminate();
-  }
-
   public static void deleteExisting(Session session) {
     ClientRepository clientRepository = new ClientRepository(session);
     clientRepository.findAll().stream().map(Client::getId).forEach(clientRepository::delete);
