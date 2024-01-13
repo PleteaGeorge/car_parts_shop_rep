@@ -5,7 +5,7 @@ import org.example.repository.entities.Offer;
 
 import java.util.List;
 
-public class OfferDiscount {
+public class OfferUtility {
   public static Double getTotalAmount(List<CarPart> carParts) {
     return carParts.stream().map(CarPart::getPrice).reduce(.0, Double::sum);
   }

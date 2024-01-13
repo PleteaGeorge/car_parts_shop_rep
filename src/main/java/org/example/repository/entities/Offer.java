@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.example.utils.OfferDiscount;
+import org.example.utils.OfferUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +35,9 @@ public class Offer {
     result.append((null == id) ? "not yet an offer" : id.toString()).append("}:\n");
     carParts.forEach(carPart -> result.append("    ").append(carPart.toString()).append("\n"));
     return result
-      .append("  total amount: $").append(OfferDiscount.getTotalAmount(carParts))
+      .append("  total amount: $").append(OfferUtility.getTotalAmount(carParts))
       .append("  amount: $").append(amount)
-      .append("  discount: ").append(OfferDiscount.getDiscount(this)).append(" %")
+      .append("  discount: ").append(OfferUtility.getDiscount(this)).append(" %")
       .toString();
   }
 }
