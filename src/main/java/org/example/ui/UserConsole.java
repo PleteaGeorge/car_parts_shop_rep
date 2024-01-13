@@ -1,5 +1,6 @@
 package org.example.ui;
 
+import lombok.Getter;
 import org.example.config.ui.Command;
 import org.example.config.ui.Functor;
 import org.example.config.ui.UserConsoleConfiguration;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 
 public class UserConsole {
   private static UserConsole instance;
+  @Getter
   private final Scanner scanner;
   private final Map<Command, Functor> commands;
   private final Command exitCommand;
@@ -24,7 +26,7 @@ public class UserConsole {
     unknownCommandFormat = UserConsoleConfiguration.UNKNOWN_COMMAND_FORMAT;
   }
 
-  private static UserConsole get() {
+  public static UserConsole get() {
     if (null != instance) {
       return instance;
     }

@@ -1,5 +1,8 @@
 package org.example.config.ui;
 
+import org.example.service.MakeOffer;
+import org.example.service.ShowClientOffers;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,31 +27,11 @@ public class UserConsoleConfiguration {
   public static Map<Command, Functor> getCommands() {
     final Map<Command, Functor> result = new HashMap<>();
     // EXIT_COMMAND
-    result.put(getExitCommand(), session ->
-      System.out.println("Exiting...")
-    );
-//    // <description>
-//    result.put(new Command("makeOffer"), session ->
-//      new CarPartNameRepository(session).insert(new CarPartName("inside mirror"))
-//    );
-//    // <description>
-//    result.put(new Command("makeOffe1"), session ->
-//      new CarPartNameRepository(session).insert(new CarPartName("driver left mirror"))
-//    );
-//    // <description>
-//    result.put(new Command("makeOffe2"), session -> {
-//      CarPartName carPartName = new CarPartName("driver left seat");
-//      CarPartNameRepository carPartNameRepository = new CarPartNameRepository(session);
-//      carPartNameRepository.insert(carPartName);
-//      carPartNameRepository.delete(carPartName.getId());
-//    });
-//    // <description>
-//    result.put(new Command("makeOffe3"), session -> {
-//      CarPartName carPartName = new CarPartName("pasenger right mirror");
-//      CarPartNameRepository carPartNameRepository = new CarPartNameRepository(session);
-//      carPartNameRepository.insert(carPartName);
-//      carPartNameRepository.update(carPartName.getId(), "passenger right mirror");
-//    });
+    result.put(getExitCommand(), session -> System.out.println("Exiting..."));
+    // builds an offer for an existing client with existing parts establishing an amount or a discount
+    result.put(new Command("makeOffer"), MakeOffer::execute);
+    // self-explanatory
+    result.put(new Command("showClientOffers"), ShowClientOffers::execute);
     return result;
   }
 }

@@ -31,12 +31,13 @@ public class Offer {
 
   @Override
   public String toString() {
-    StringBuilder result = new StringBuilder("Offer {" + id.toString() + "}:\n");
+    StringBuilder result = new StringBuilder("Offer {");
+    result.append((null == id) ? "not yet an offer" : id.toString()).append("}:\n");
     carParts.forEach(carPart -> result.append("    ").append(carPart.toString()).append("\n"));
     return result
-      .append("  total amount: $").append(OfferDiscount.getTotalAmount(this))
-      .append("  amount: $").append(amount.toString())
-      .append("  discount: ").append(OfferDiscount.getDiscount(this)).append(" %\n")
+      .append("  total amount: $").append(OfferDiscount.getTotalAmount(carParts))
+      .append("  amount: $").append(amount)
+      .append("  discount: ").append(OfferDiscount.getDiscount(this)).append(" %")
       .toString();
   }
 }
