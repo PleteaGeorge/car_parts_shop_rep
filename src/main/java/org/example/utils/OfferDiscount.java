@@ -11,9 +11,10 @@ public class OfferDiscount {
   }
 
   public static Double getDiscount(Offer offer) {
-    if (1e-5 > offer.getAmount()) {
-      return 100.;
-    }
-    return ((int)(10000 * (1 - (getTotalAmount(offer.getCarParts()) / offer.getAmount())))) / 100.;
+    return ((int)(10000 * (1 - (offer.getAmount() / getTotalAmount(offer.getCarParts()))))) / 100.;
+  }
+
+  public static Double getAmount(Double total, Double discount) {
+    return ((int)(100 * ((1 - (discount / 100)) * total))) / 100.;
   }
 }

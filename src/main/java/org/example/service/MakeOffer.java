@@ -4,6 +4,7 @@ import org.example.repository.entities.CarPart;
 import org.example.repository.entities.Client;
 import org.example.utils.GetCarPartsListByCrtNoList;
 import org.example.utils.GetClientByCrtNo;
+import org.example.utils.OfferDiscount;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class MakeOffer {
     // choose car parts (show car parts) by ',' separated list of crt.no.
     List<CarPart> carParts = GetCarPartsListByCrtNoList.execute(session);
     // show total amount
-
+    System.out.println("Total amount: $"+ OfferDiscount.getTotalAmount(carParts));
     // choose 'by amount ($)' or 'by discount (%)'
     // choose amount/discount with respect to previous action
     // show the offer
