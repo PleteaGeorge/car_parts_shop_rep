@@ -24,7 +24,11 @@ public class Car {
   private String model;
   @NonNull
   private Integer manufactureYear;
-  @OneToMany
-  @JoinColumn(name = "car_id")
+  @OneToMany(mappedBy = "car")
   private final List<CarPart> components = new ArrayList<>();
+
+  @Override
+  public String toString() {
+    return brand + " " + model + " " + manufactureYear;
+  }
 }

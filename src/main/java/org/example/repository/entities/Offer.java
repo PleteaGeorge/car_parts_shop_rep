@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.example.utils.OfferDiscount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,4 +28,15 @@ public class Offer {
     inverseJoinColumns = @JoinColumn(name = "car_part_id")
   )
   private final List<CarPart> carParts = new ArrayList<>();
+
+  @Override
+  public String toString() {
+    StringBuilder result = new StringBuilder("Offer {" + id.toString() + "}:\n");
+    carParts.forEach(carPart -> result.append("    ").append(carPart.toString()).append("\n"));
+    return result
+      .append("  total amount: $").append(OfferDiscount.getTotalAmount(this))
+      .append("  amount: $").append(amount.toString())
+      .append("  discount: ").append(OfferDiscount.getDiscount(this)).append(" %\n")
+      .toString();
+  }
 }

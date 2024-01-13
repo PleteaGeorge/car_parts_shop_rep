@@ -28,8 +28,8 @@ public class PopulateCarParts {
           10 + (int)(40 * Math.random())
         );
         carPart.setName(name);
+        carPart.setCar(car);
         carPartRepository.insert(carPart);
-        carRepository.update(car.getId(), carPart);
       }
     ));
   }

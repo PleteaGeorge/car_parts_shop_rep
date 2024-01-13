@@ -9,17 +9,15 @@ public class PopulateDatabase {
     PopulateClients.deleteExisting(Application.getSession());
     PopulateClients.populate(Application.getSession());
     //
+    PopulateCarParts.deleteExisting(Application.getSession());
+    //
     PopulateCars.deleteExisting(Application.getSession());
     PopulateCars.populate(Application.getSession());
     //
     PopulateCarPartsNames.deleteExisting(Application.getSession());
+    PopulateCarPartsNames.populate(Application.getSession());
     //
-//    PopulateCarParts.deleteExisting(Application.getSession());
-//    PopulateCars.deleteExisting(Application.getSession());
-//    PopulateCars.populate(Application.getSession());
-//    PopulateCarPartsNames.deleteExisting(Application.getSession());
-//    PopulateCarPartsNames.populate(Application.getSession());
-//    PopulateCarParts.populate(Application.getSession());
+    PopulateCarParts.populate(Application.getSession());
     //
     Application.terminate();
   }
