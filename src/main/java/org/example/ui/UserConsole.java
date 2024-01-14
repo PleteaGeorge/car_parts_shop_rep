@@ -47,7 +47,7 @@ public class UserConsole {
     showHelp();
   }
 
-  private void showHelp() {
+  public void showHelp() {
     commands.keySet().forEach(command -> System.out.println(" " + command.getCommand()));
   }
 

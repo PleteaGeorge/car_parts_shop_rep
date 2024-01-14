@@ -2,6 +2,7 @@ package org.example.config.ui;
 
 import org.example.service.MakeOffer;
 import org.example.service.ShowClientOffers;
+import org.example.ui.UserConsole;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,8 @@ public class UserConsoleConfiguration {
     result.put(new Command("makeOffer"), MakeOffer::execute);
     // self-explanatory
     result.put(new Command("showClientOffers"), ShowClientOffers::execute);
+    // self-explanatory
+    result.put(new Command("help"), session -> UserConsole.get().showHelp());
     //
     // aliases
     result.put(new Command("O"), result.get(new Command("makeOffer")));
