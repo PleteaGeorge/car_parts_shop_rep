@@ -1,6 +1,5 @@
 package org.example.service;
 
-import org.example.repository.ClientRepository;
 import org.example.repository.OfferRepository;
 import org.example.repository.entities.CarPart;
 import org.example.repository.entities.Client;
@@ -45,8 +44,7 @@ public class MakeOffer {
         break;
       }
       if ("S".equalsIgnoreCase(answer)) {
-        new OfferRepository(session).insert(offer);
-        new ClientRepository(session).update(client.getId(), offer);
+        new OfferRepository(session).insert(offer, client);
         break;
       }
       offer.getCarParts().clear();

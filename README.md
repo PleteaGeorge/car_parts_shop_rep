@@ -54,6 +54,21 @@
     * Populating database
     * Making offers, tests and user console interface
 * #### Working on entities
+    * Tables:
+        * cars (id primary key, brand, model, manufacture_year)
+        * car_parts_names (id primary key, name)
+        * car_parts (id primary key, oe_number, price, stock)
+        * clients (id primary key, name, phone_number)
+        * offers (id primary key, amount)
+    * Relationships:
+        * relationship (clients, offers): oneToMany   
+          (one client may receive several offers)
+        * relationship (offers, car_parts): manyToMany  
+          (one offer may contain several car parts AND one car part may be contained in several offers)
+        * relationship (car_parts_names, car_parts): oneToMany    
+          (one name may be assumed by several car parts)
+        * relationship (car_parts, cars): oneToMany bidirectional   
+          (one car is composed by a large amount of car parts BUT one car part is only mounted on one car)
 
 ### Day 2
 
