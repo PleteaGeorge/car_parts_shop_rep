@@ -11,10 +11,10 @@ public class OfferUtility {
   }
 
   public static Double getDiscount(Offer offer) {
-    return ((int)(10000 * (1 - (offer.getAmount() / getTotalAmount(offer.getCarParts()))))) / 100.;
+    return 100 * (1 - (offer.getAmount() / getTotalAmount(offer.getCarParts())));
   }
 
   public static Double getAmount(Double total, Double discount) {
-    return ((int)(100 * ((1 - (discount / 100)) * total))) / 100.;
+    return total * (1 - (discount / 100));
   }
 }

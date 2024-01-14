@@ -32,6 +32,11 @@ public class UserConsoleConfiguration {
     result.put(new Command("makeOffer"), MakeOffer::execute);
     // self-explanatory
     result.put(new Command("showClientOffers"), ShowClientOffers::execute);
+    //
+    // aliases
+    result.put(new Command("O"), result.get(new Command("makeOffer")));
+    result.put(new Command("sC"), result.get(new Command("showClientOffers")));
+    //
     return result;
   }
 }

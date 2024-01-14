@@ -6,18 +6,20 @@ public class PopulateDatabase {
   public static void main(String[] args) {
     Application.start();
     //
-    PopulateClients.deleteExisting(Application.getSession());
-    PopulateClients.populate(Application.getSession());
+    ClientsUtility.deleteExisting(Application.getSession());
+    ClientsUtility.populate(Application.getSession());
     //
-    PopulateCarParts.deleteExisting(Application.getSession());
+    OffersUtility.deleteExisting(Application.getSession());
     //
-    PopulateCars.deleteExisting(Application.getSession());
-    PopulateCars.populate(Application.getSession());
+    CarPartsUtility.deleteExisting(Application.getSession());
     //
-    PopulateCarPartsNames.deleteExisting(Application.getSession());
-    PopulateCarPartsNames.populate(Application.getSession());
+    CarsUtility.deleteExisting(Application.getSession());
+    CarsUtility.populate(Application.getSession());
     //
-    PopulateCarParts.populate(Application.getSession());
+    CarPartsNamesUtility.deleteExisting(Application.getSession());
+    CarPartsNamesUtility.populate(Application.getSession());
+    //
+    CarPartsUtility.populate(Application.getSession());
     //
     Application.terminate();
   }

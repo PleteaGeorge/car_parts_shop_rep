@@ -4,7 +4,7 @@ import org.example.repository.CarRepository;
 import org.example.repository.entities.Car;
 import org.hibernate.Session;
 
-public class PopulateCars {
+public class CarsUtility {
   public static void deleteExisting(Session session) {
     CarRepository carRepository = new CarRepository(session);
     carRepository.findAll().stream().map(Car::getId).forEach(carRepository::delete);

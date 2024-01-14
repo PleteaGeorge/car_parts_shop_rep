@@ -10,7 +10,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class PopulateCarParts {
+public class CarPartsUtility {
   public static void deleteExisting(Session session) {
     CarPartRepository carPartRepository = new CarPartRepository(session);
     carPartRepository.findAll().stream().map(CarPart::getId).forEach(carPartRepository::delete);

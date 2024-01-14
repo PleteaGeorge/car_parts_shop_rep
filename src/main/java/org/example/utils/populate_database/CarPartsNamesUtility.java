@@ -4,7 +4,7 @@ import org.example.repository.CarPartNameRepository;
 import org.example.repository.entities.CarPartName;
 import org.hibernate.Session;
 
-public class PopulateCarPartsNames {
+public class CarPartsNamesUtility {
   public static void deleteExisting(Session session) {
     CarPartNameRepository carPartNameRepository = new CarPartNameRepository(session);
     carPartNameRepository.findAll().stream().map(CarPartName::getId).forEach(carPartNameRepository::delete);

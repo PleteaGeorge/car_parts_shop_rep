@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.example.utils.OfferUtility;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -34,10 +35,11 @@ public class Offer {
     StringBuilder result = new StringBuilder("Offer {");
     result.append((null == id) ? "not yet an offer" : id.toString()).append("}:\n");
     carParts.forEach(carPart -> result.append("    ").append(carPart.toString()).append("\n"));
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
     return result
-      .append("  total amount: $").append(OfferUtility.getTotalAmount(carParts))
-      .append("  amount: $").append(amount)
-      .append("  discount: ").append(OfferUtility.getDiscount(this)).append(" %")
+      .append("  total amount: $").append(decimalFormat.format(OfferUtility.getTotalAmount(carParts)))
+      .append("  amount: $").append(decimalFormat.format(amount))
+      .append("  discount: ").append(decimalFormat.format(OfferUtility.getDiscount(this))).append(" %")
       .toString();
   }
 }
