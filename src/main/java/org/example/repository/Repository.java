@@ -7,17 +7,14 @@ import org.hibernate.Transaction;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class Repository<T> {
+public abstract class Repository<EntityT> {
   @Getter
   private final Session session;
-  private final Class<T> typeParameterClass;
-  @Getter
-  private final String typeParameterClassName;
+  private final Class<EntityT> entityClass;
 
-  public Repository(Session session, Class<T> typeParameterClass) {
+  public Repository(Session session, Class<EntityT> entityClass) {
     this.session = session;
-    this.typeParameterClass = typeParameterClass;
-    typeParameterClassName = typeParameterClass.getName();
+    this.entityClass = entityClass;
   }
 
   public void insert(Object object) {
@@ -39,7 +36,7 @@ public abstract class Repository<T> {
     Transaction transaction = null;
     try {
       transaction = session.beginTransaction();
-      session.remove(session.get(typeParameterClass, id));
+      session.remove(session.get(entityClass, id));
       transaction.commit();
     }
     catch (Exception e) {
@@ -50,12 +47,12 @@ public abstract class Repository<T> {
     }
   }
 
-  public T find(UUID id) {
-    return session.get(typeParameterClass, id);
+  public EntityT find(UUID id) {
+    return session.get(entityClass, id);
   }
 
-  public List<T> findAll() {
-    return session.createQuery("FROM " + typeParameterClassName, typeParameterClass)
+  public List<EntityT> findAll() {
+    return session.createQuery("FROM " + entityClass.getName(), entityClass)
       .getResultList();
   }
 }
