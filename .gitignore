@@ -7,7 +7,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea/
-/**MyPwd.java
+/**/MyPwd.java
 
 .idea/modules.xml
 .idea/jarRepositories.xml
