@@ -1,13 +1,10 @@
 package org.example.repository;
+import org.example.repository.entities.CarPart;
+import org.hibernate.Session;
 
-public class CarPartRepository implements IRepository{
-    @Override
-    public void insert() {
+public class CarPartRepository extends Repository<CarPart> {
 
-    }
-
-    @Override
-    public void delete() {
-
+    public CarPartRepository(Session session){
+        super(session, CarPart.class);
     }
 }

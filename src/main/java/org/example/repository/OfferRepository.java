@@ -1,13 +1,11 @@
 package org.example.repository;
 
-public class OfferRepository implements IRepository{
-    @Override
-    public void insert() {
+import org.example.repository.entities.Offer;
+import org.hibernate.Session;
 
-    }
+public class OfferRepository extends Repository<Offer> {
 
-    @Override
-    public void delete() {
-
+    public OfferRepository(Session session){
+        super(session, Offer.class);
     }
 }

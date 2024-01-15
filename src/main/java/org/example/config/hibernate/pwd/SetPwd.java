@@ -1,6 +1,7 @@
-package org.example.config.hibernate.pwd.my_pwd;
+package org.example.config.hibernate.pwd;
 
 
+import org.example.config.hibernate.pwd.my_pwd.MyPwd;
 import org.hibernate.cfg.Configuration;
 
 public class SetPwd {
