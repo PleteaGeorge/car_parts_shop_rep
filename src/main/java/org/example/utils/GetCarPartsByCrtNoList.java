@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GetCarPartsListByCrtNoList {
+public class GetCarPartsByCrtNoList {
   public static List<CarPart> execute(Session session) {
     Map<Integer, CarPart> map = new HashMap<>();
     int i = 0;

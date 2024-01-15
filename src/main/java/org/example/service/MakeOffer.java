@@ -5,7 +5,7 @@ import org.example.repository.entities.CarPart;
 import org.example.repository.entities.Client;
 import org.example.repository.entities.Offer;
 import org.example.ui.UserConsole;
-import org.example.utils.GetCarPartsListByCrtNoList;
+import org.example.utils.GetCarPartsByCrtNoList;
 import org.example.utils.GetClientByCrtNo;
 import org.example.utils.OfferUtility;
 import org.hibernate.Session;
@@ -19,7 +19,7 @@ public class MakeOffer {
       // choose the client (show clients) by crt.no.
       Client client = GetClientByCrtNo.execute(session);
       // choose car parts (show car parts) by ',' separated list of crt.no.
-      List<CarPart> carParts = GetCarPartsListByCrtNoList.execute(session);
+      List<CarPart> carParts = GetCarPartsByCrtNoList.execute(session);
       // show total amount
       System.out.printf("Total amount: $%.2f\n", OfferUtility.getTotalAmount(carParts));
       // choose 'by amount ($)' or 'by discount (%)'
