@@ -25,9 +25,4 @@ public class Client {
   @OneToMany
   @JoinColumn(name = "client_id")
   private final List<Offer> offers = new ArrayList<>();
-
-  @Override
-  public String toString() {
-    return name + " (phone number: " + phoneNumber + ")";
-  }
 }

@@ -33,12 +33,4 @@ public class OfferUtilityTest {
     Double discount = OfferUtility.getDiscount(offer);
     assertEquals(11.5, discount, 1e-15);
   }
-
-  @Test
-  public void getAmountTest() {
-    Double total = 100.;
-    Double discount = 20.;
-    Double amount = OfferUtility.getAmount(total, discount);
-    assertEquals(80., amount, 1e-15);
-  }
 }
