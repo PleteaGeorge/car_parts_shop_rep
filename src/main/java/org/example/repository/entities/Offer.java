@@ -7,8 +7,10 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -19,16 +21,15 @@ public class Offer {
     @GeneratedValue
 
     private UUID id;
+
     @NonNull
-    @Column(name= "client_id")
-    private UUID clientId;
-    @NonNull
-    @Column(name= "car_parts_id")
-    private UUID carPartsId;
-    @NonNull
-    private double amount;
+    private Double amount;
     @ManyToMany
-    @JoinTable(name= "offers_to_car_parts", joinColumns = @JoinColumn(name= "offer_id"), inverseJoinColumns = @JoinColumn(name= "car_part_id"))
-    private List<CarPart> carParts;
+    @JoinTable(
+            name = "car_parts_to_offers",
+            joinColumns = @JoinColumn(name = "offer_id"),
+            inverseJoinColumns = @JoinColumn(name = "car_part_id")
+    )
+    private final List<CarPart> carParts = new ArrayList<>();
 
 }

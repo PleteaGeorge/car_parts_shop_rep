@@ -1,8 +1,6 @@
 package org.example.repository.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -20,11 +18,15 @@ public class CarPart {
 
     private UUID id;
     @NonNull
-    private String name;
+    private String oeNumber;
     @NonNull
-    private double price;
+    private Double price;
     @NonNull
-    private String marca;
+    private Integer stock;
+
+   @ManyToOne
+   @JoinColumn(name= "car_parts_names_id")
+   private CarPartName name;
 
 
 

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 @Data
@@ -18,14 +19,12 @@ public class Client {
 
     private UUID id;
     @NonNull
-    private int phone;
+    private String phoneNumber;
     @NonNull
     private String name;
-    @NonNull
-    private String marca;
     @OneToMany
-    @JoinColumn(name= "client_Id")
-   private List<Offer> offerList;
+    @JoinColumn(name= "client_id")
+   private final List<Offer> offerList= new ArrayList<>();
 
 
 }
