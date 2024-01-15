@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class Repository<EntityT> {
-    @Getter
+
     private final Session session;
     private final Class<EntityT> entityClass;
 
