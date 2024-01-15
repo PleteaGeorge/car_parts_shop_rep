@@ -1,0 +1,23 @@
+car_parts(id, name, price, marca)
+clients(id, phone, name)
+offers(id, client_id, car_parts_id, amount)
+
+client -> offers = onetomany
+offers <-> car_parts = manytomany
+
+
+
+
+cars (id primary key, brand, model, manufacture_year)
+car_parts_names (id primary key, name)
+car_parts (id primary key, oe_number, price, stock)
+clients (id primary key, name, phone_number)
+offers (id primary key, amount)
+
+relationship(clients, offers): oneToMany (unui client i se pot face mai multe oferte)
+relationship(offers, car_parts): manyToMany (o oferta poate contine mai multe piese SI o piesa poate face parte din mai multe oferte)
+relationship(car_parts_names, car_parts): (un nume poate fi atribuit mai multor piese)
+relationship(car_parts, cars): (o masina e compusa, cu siguranta,
+                       din mai multe piese DAR o piesa nu se poate monta decit pe o singura masina)
+  OBS.: o masina are in componenta NUMAI roata (chiar daca 4 buc.) dar nu are in componenta SI roata-de-ford SI roata-de-audi,
+  dar poate avea in componenta SI roata SI scaun.
