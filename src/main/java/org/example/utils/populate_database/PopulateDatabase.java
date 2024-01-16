@@ -1,6 +1,6 @@
 package org.example.utils.populate_database;
 
-import org.example.config.app.Application;
+import org.example.Application;
 
 public class PopulateDatabase {
   public static void main(String[] args) {

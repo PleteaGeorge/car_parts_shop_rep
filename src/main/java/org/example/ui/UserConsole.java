@@ -2,7 +2,6 @@ package org.example.ui;
 
 import lombok.Getter;
 import org.example.config.ui.Command;
-import org.example.config.ui.Functor;
 import org.example.config.ui.UserConsoleConfiguration;
 import org.hibernate.Session;
 
@@ -13,7 +12,7 @@ public class UserConsole {
   private static UserConsole instance;
   @Getter
   private final Scanner scanner;
-  private final Map<Command, Functor> commands;
+  private final Map<Command, PassToBackend> commands;
   private final Command exitCommand;
   private final String prompter;
   private final String unknownCommandFormat;
@@ -26,7 +25,7 @@ public class UserConsole {
     unknownCommandFormat = UserConsoleConfiguration.UNKNOWN_COMMAND_FORMAT;
   }
 
-  public static UserConsole get() {
+  public static UserConsole getInstance() {
     if (null != instance) {
       return instance;
     }
@@ -52,19 +51,19 @@ public class UserConsole {
   }
 
   public static void run(Session session) {
-    get().execute(session);
+    getInstance().execute(session);
   }
 
   public void execute(Session session) {
     while (true) {
       showPrompter();
       final Command command = new Command(scanner.nextLine().trim().replaceAll("\\s", ""));
-      final Functor functor = commands.get(command);
-      if (null == functor) {
+      final PassToBackend passToBackend = commands.get(command);
+      if (null == passToBackend) {
         showUnknownCommand(command);
         continue;
       }
-      functor.execute(session);
+      passToBackend.execute(session);
       if (exitCommand.equals(command)) {
         break;
       }

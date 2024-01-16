@@ -3,6 +3,7 @@ package org.example.config.ui;
 import org.example.service.OfferService;
 import org.example.service.ClientService;
 import org.example.service.Test;
+import org.example.ui.PassToBackend;
 import org.example.ui.UserConsole;
 
 import java.util.HashMap;
@@ -26,16 +27,16 @@ public class UserConsoleConfiguration {
     return exitCommand;
   }
 
-  public static Map<Command, Functor> getCommands() {
-    final Map<Command, Functor> result = new HashMap<>();
+  public static Map<Command, PassToBackend> getCommands() {
+    final Map<Command, PassToBackend> result = new HashMap<>();
     // EXIT_COMMAND
     result.put(getExitCommand(), session -> System.out.println("Exiting..."));
     // builds an offer for an existing client with existing parts establishing an amount or a discount
     result.put(new Command("makeOffer"), session -> new OfferService(session).makeOffer());
     // self-explanatory
-    result.put(new Command("showClientOffers"), session-> new ClientService(session).showClientOffers());
+    result.put(new Command("showClientOffers"), session -> new ClientService(session).showClientOffers());
     // self-explanatory
-    result.put(new Command("help"), session -> UserConsole.get().showHelp());
+    result.put(new Command("help"), session -> UserConsole.getInstance().showHelp());
     // self-explanatory
     result.put(new Command("test"), Test::execute);
     //
