@@ -4,8 +4,13 @@ import org.example.repository.entities.Client;
 import org.example.utils.GetClientByCrtNo;
 import org.hibernate.Session;
 
-public class ShowClientOffers {
-  public static void execute(Session session) {
+public class ClientService {
+  private final Session session;
+  public ClientService(Session session){
+    this.session=session;
+  }
+
+  public void showClientOffers() {
     // choose the client (show clients) by crt.no.
     Client client = GetClientByCrtNo.execute(session);
     // show offers one by one

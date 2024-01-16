@@ -7,12 +7,12 @@ import org.hibernate.Transaction;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class Repository<EntityT> {
+public abstract class Repository<T> {
   @Getter
   private final Session session;
-  private final Class<EntityT> entityClass;
+  private final Class<T> entityClass;
 
-  public Repository(Session session, Class<EntityT> entityClass) {
+  public Repository(Session session, Class<T> entityClass) {
     this.session = session;
     this.entityClass = entityClass;
   }
@@ -47,11 +47,11 @@ public abstract class Repository<EntityT> {
     }
   }
 
-  public EntityT find(UUID id) {
+  public T find(UUID id) {
     return session.get(entityClass, id);
   }
 
-  public List<EntityT> findAll() {
+  public List<T> findAll() {
     return session.createQuery("FROM " + entityClass.getName(), entityClass)
       .getResultList();
   }

@@ -12,8 +12,12 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class MakeOffer {
-  public static void execute(Session session) {
+public class OfferService {
+  private final Session session;
+  public OfferService(Session session){
+    this.session=session;
+  }
+  public  void makeOffer() {
     Offer offer = new Offer(.0);
     while (true) {
       // choose the client (show clients) by crt.no.

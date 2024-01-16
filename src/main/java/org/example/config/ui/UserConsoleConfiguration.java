@@ -1,7 +1,8 @@
 package org.example.config.ui;
 
-import org.example.service.MakeOffer;
-import org.example.service.ShowClientOffers;
+import org.example.service.OfferService;
+import org.example.service.ClientService;
+import org.example.service.Test;
 import org.example.ui.UserConsole;
 
 import java.util.HashMap;
@@ -30,11 +31,13 @@ public class UserConsoleConfiguration {
     // EXIT_COMMAND
     result.put(getExitCommand(), session -> System.out.println("Exiting..."));
     // builds an offer for an existing client with existing parts establishing an amount or a discount
-    result.put(new Command("makeOffer"), MakeOffer::execute);
+    result.put(new Command("makeOffer"), session -> new OfferService(session).makeOffer());
     // self-explanatory
-    result.put(new Command("showClientOffers"), ShowClientOffers::execute);
+    result.put(new Command("showClientOffers"), session-> new ClientService(session).showClientOffers());
     // self-explanatory
     result.put(new Command("help"), session -> UserConsole.get().showHelp());
+    // self-explanatory
+    result.put(new Command("test"), Test::execute);
     //
     // aliases
     result.put(new Command("O"), result.get(new Command("makeOffer")));
