@@ -2,7 +2,6 @@ package org.example.config.ui;
 
 import org.example.service.OfferService;
 import org.example.service.ClientService;
-import org.example.service.Test;
 import org.example.ui.PassToBackend;
 import org.example.ui.UserConsole;
 
@@ -37,8 +36,6 @@ public class UserConsoleConfiguration {
     result.put(new Command("showClientOffers"), session -> new ClientService(session).showClientOffers());
     // self-explanatory
     result.put(new Command("help"), session -> UserConsole.getInstance().showHelp());
-    // self-explanatory
-    result.put(new Command("test"), Test::execute);
     //
     // aliases
     result.put(new Command("O"), result.get(new Command("makeOffer")));

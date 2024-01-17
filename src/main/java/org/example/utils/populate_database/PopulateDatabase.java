@@ -1,26 +1,26 @@
 package org.example.utils.populate_database;
 
-import org.example.Application;
+import org.example.BackendApplication;
 
 public class PopulateDatabase {
   public static void main(String[] args) {
-    Application.start();
+    BackendApplication.start();
     //
-    ClientsUtility.deleteExisting(Application.getSession());
-    ClientsUtility.populate(Application.getSession());
+    ClientsUtility.deleteExisting(BackendApplication.getSession());
+    ClientsUtility.populate(BackendApplication.getSession());
     //
-    OffersUtility.deleteExisting(Application.getSession());
+    OffersUtility.deleteExisting(BackendApplication.getSession());
     //
-    CarPartsUtility.deleteExisting(Application.getSession());
+    CarPartsUtility.deleteExisting(BackendApplication.getSession());
     //
-    CarsUtility.deleteExisting(Application.getSession());
-    CarsUtility.populate(Application.getSession());
+    CarsUtility.deleteExisting(BackendApplication.getSession());
+    CarsUtility.populate(BackendApplication.getSession());
     //
-    CarPartsNamesUtility.deleteExisting(Application.getSession());
-    CarPartsNamesUtility.populate(Application.getSession());
+    CarPartsNamesUtility.deleteExisting(BackendApplication.getSession());
+    CarPartsNamesUtility.populate(BackendApplication.getSession());
     //
-    CarPartsUtility.populate(Application.getSession());
+    CarPartsUtility.populate(BackendApplication.getSession());
     //
-    Application.terminate();
+    BackendApplication.terminate();
   }
 }

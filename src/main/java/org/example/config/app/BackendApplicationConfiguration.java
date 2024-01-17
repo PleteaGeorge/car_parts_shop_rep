@@ -4,7 +4,7 @@ import org.example.config.hibernate.HibernateConfiguration;
 import org.example.repository.entities.*;
 import org.hibernate.cfg.Configuration;
 
-public class ApplicationConfiguration {
+public class BackendApplicationConfiguration {
   public static synchronized Configuration getHibernateConfiguration() {
     HibernateConfiguration.addAnnotatedClasses(
       Car.class,
