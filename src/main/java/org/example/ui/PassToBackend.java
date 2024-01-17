@@ -1,8 +1,8 @@
-package org.example.config.ui;
+package org.example.ui;
 
 import org.hibernate.Session;
 
 @FunctionalInterface
-public interface Functor {
+public interface PassToBackend {
   void execute(Session session);
 }

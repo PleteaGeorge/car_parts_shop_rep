@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.config.app.Application;
 import org.example.ui.UserConsole;
 
 public class Main {
