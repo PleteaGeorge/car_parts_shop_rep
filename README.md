@@ -2,11 +2,13 @@
 
 ## Meet our team
 
-| Lucian-Ovidiu Marinescu  | ( team leader )     |
-|--------------------------|---------------------|
-| **Alina Iftode**         | **( full member )** |
-| **Andrei-Adelin Cazacu** | **( full member )** |
-| **George Pletea**        | **( full member )** |
+| Lucian-Ovidiu Marinescu           | ( team leader )     |
+|-----------------------------------|---------------------|
+| **Alina Iftode**                  | **( full member )** |
+| **Andrei-Adelin Cazacu**          | **( full member )** |
+| **George Pletea**                 | **( full member )** |
+| **Ovidiu-Ionut Zavache**          | **( full member )** |
+| **Cosmin-Ionut Buzarin-Girjoaba** | **( full member )** |
 
 ## Object of the project
 
@@ -92,10 +94,12 @@
 
 ## Assessments
 
-| Lucian-Ovidiu Marinescu  | **( % )** |
-|--------------------------|-----------|
-| **Alina Iftode**         | **( % )** |
-| **Andrei-Adelin Cazacu** | **( % )** |
-| **George Pletea**        | **( % )** |
+| Lucian-Ovidiu Marinescu           | **( % )** |
+|-----------------------------------|-----------|
+| **Alina Iftode**                  | **( % )** |
+| **Andrei-Adelin Cazacu**          | **( % )** |
+| **George Pletea**                 | **( % )** |
+| **Ovidiu-Ionut Zavache**          | **( % )** |
+| **Cosmin-Ionut Buzarin-Girjoaba** | **( % )** |
 
 ## Conclusion
