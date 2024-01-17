@@ -8,6 +8,8 @@ import org.example.ui.UserConsole;
 import org.example.utils.OfferUtility;
 import org.hibernate.Session;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 public class OfferService {
@@ -55,6 +57,7 @@ public class OfferService {
         break;
       }
       if (SUBMIT.equalsIgnoreCase(answer)) {
+        offer.setDate(Date.from(Instant.now()));
         offerRepository.insert(offer, client);
         break;
       }

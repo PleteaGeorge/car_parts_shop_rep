@@ -3,6 +3,7 @@ package org.example.utils;
 import org.example.repository.entities.CarPart;
 import org.example.repository.entities.Offer;
 
+import java.util.Date;
 import java.util.List;
 
 public class OfferUtility {
@@ -16,5 +17,8 @@ public class OfferUtility {
 
   public static Double getAmount(Double total, Double discount) {
     return total * (1 - (discount / 100));
+  }
+
+  public static void dateConverter(Date date) {
   }
 }

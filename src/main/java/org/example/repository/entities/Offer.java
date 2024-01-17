@@ -9,6 +9,7 @@ import org.example.utils.OfferUtility;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,6 +21,7 @@ public class Offer {
   @Id
   @GeneratedValue
   private UUID id;
+  private Date date;
   @NonNull
   private Double amount;
   @ManyToMany
