@@ -5,16 +5,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateConfiguration {
-    static {
-        configuration = SetPwd.getConfigurationWithPwdProperty(
-                new Configuration().configure("hibernate.cfg.xml")
-        );
+  static {
+    configuration = SetPwd.getConfigurationWithPwdProperty(
+      new Configuration().configure("hibernate.cfg.xml")
+    );
+  }
+
+  private final static Configuration configuration;
+
+  public static SessionFactory getSessionFactory(Class<?>... annotatedClasses) {
+    for (final Class<?> annotatedClass : annotatedClasses) {
+      configuration.addAnnotatedClass(annotatedClass);
     }
-    private final static Configuration configuration;
-    public static SessionFactory getSessionFactory(Class<?>... annotatedClasses){
-        for (Class<?> annotatedClass : annotatedClasses){
-            configuration.addAnnotatedClass(annotatedClass);
-        }
-        return configuration.buildSessionFactory();
-    }
+    return configuration.buildSessionFactory();
+  }
 }

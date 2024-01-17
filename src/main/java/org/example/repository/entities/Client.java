@@ -1,7 +1,10 @@
 package org.example.repository.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +19,15 @@ public class Client {
     @GeneratedValue
     private UUID id;
     @NonNull
-    private int phoneNumber;
-    @NonNull
     private String name;
+    @NonNull
+    private String phoneNumber;
     @OneToMany
     @JoinColumn(name = "client_id")
-    private final List<Offer> offerList = new ArrayList<>();
+    private final List<Offer> offers = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return name + " (phone number: " + phoneNumber + ")";
+    }
 }

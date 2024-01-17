@@ -1,22 +1,17 @@
 package org.example;
 
-import org.example.config.hibernate.HibernateConfiguration;
-import org.example.repository.entities.*;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.example.config.app.Application;
+import org.example.ui.UserConsole;
+
+import java.text.Format;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
-    public static void main(String[] args) {
-        try (SessionFactory sessionFactory = HibernateConfiguration.getSessionFactory(
-                CarPart.class,
-                Offer.class,
-                Client.class,
-                Car.class,
-                CarPartName.class
-            );
-             Session session = sessionFactory.openSession()
-        ){
-        }
-    }
+  public static void main(String[] args) {
+    Application.start();
+    UserConsole.run(Application.getSession());
+    Application.terminate();
+
+  }
 }

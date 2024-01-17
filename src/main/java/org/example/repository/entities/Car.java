@@ -9,22 +9,26 @@ import lombok.RequiredArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-@Data
+
 @NoArgsConstructor
 @RequiredArgsConstructor
+@Data
 @Entity(name = "cars")
 public class Car {
-    @Id
-    @GeneratedValue
-    private UUID id;
-    @NonNull
-    private String brand;
-    @NonNull
-    private String model;
-    @NonNull
-    @Column(name = "manufacture_year")
-    private Integer manufactureYear;
-    @OneToMany
-    @JoinColumn(name = "car_id")
-    private final List<CarPart> carParts = new ArrayList<>();
+  @Id
+  @GeneratedValue
+  private UUID id;
+  @NonNull
+  private String brand;
+  @NonNull
+  private String model;
+  @NonNull
+  private Integer manufactureYear;
+  @OneToMany(mappedBy = "car")
+  private final List<CarPart> components = new ArrayList<>();
+
+  @Override
+  public String toString() {
+    return brand + " " + model + " "+manufactureYear;
+  }
 }
