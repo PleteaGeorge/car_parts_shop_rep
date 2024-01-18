@@ -1,12 +1,13 @@
 package org.example.service;
 
+import org.example.repository.CarPartRepository;
+import org.example.repository.ClientRepository;
 import org.example.repository.OfferRepository;
 import org.example.repository.entities.CarPart;
 import org.example.repository.entities.Client;
 import org.example.repository.entities.Offer;
 import org.example.ui.UserConsole;
 import org.example.utils.OfferUtility;
-import org.hibernate.Session;
 
 import java.time.Instant;
 import java.util.Date;
@@ -19,20 +20,18 @@ public class OfferService {
   private static final String MODIFY = "M";
   private static final String ABORT = "A";
   private final OfferRepository offerRepository;
-  private final Session session;
 
-  public OfferService(Session session) {
-    this.session = session;
-    offerRepository = new OfferRepository(session);
+  public OfferService(OfferRepository offerRepository) {
+    this.offerRepository = offerRepository;
   }
 
   public void makeOffer() {
     Offer offer = new Offer(.0);
     while (true) {
       // choose the client (show clients) by crt.no.
-      Client client = new ClientService(session).getClientByCrtNo();
+      Client client = new ClientService(new ClientRepository(offerRepository.getSession())).getClientByCrtNo();
       // choose car parts (show car parts) by ',' separated list of crt.no.
-      List<CarPart> carParts = new CarPartService(session).getCarPartsByCrtNoList();
+      List<CarPart> carParts = new CarPartService(new CarPartRepository(offerRepository.getSession())).getCarPartsByCrtNoList();
       // show total amount
       System.out.printf("Total amount: $%.2f\n", OfferUtility.getTotalAmount(carParts));
       // choose 'by amount ($)' or 'by discount (%)'
@@ -57,8 +56,9 @@ public class OfferService {
         break;
       }
       if (SUBMIT.equalsIgnoreCase(answer)) {
-        offer.setDate(Date.from(Instant.now()));
-        offerRepository.insert(offer, client);
+        offer.setClient(client);
+//        offer.setDate(Date.from(Instant.now()));
+        offerRepository.insert(offer);
         break;
       }
       offer.getCarParts().clear();

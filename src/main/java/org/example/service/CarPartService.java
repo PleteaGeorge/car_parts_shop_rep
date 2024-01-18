@@ -3,7 +3,6 @@ package org.example.service;
 import org.example.repository.CarPartRepository;
 import org.example.repository.entities.CarPart;
 import org.example.ui.UserConsole;
-import org.hibernate.Session;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,11 +11,9 @@ import java.util.Map;
 
 public class CarPartService {
   private final CarPartRepository carPartRepository;
-  private final Session session;
 
-  public CarPartService(Session session) {
-    this.session = session;
-    carPartRepository = new CarPartRepository(session);
+  public CarPartService(CarPartRepository carPartRepository) {
+    this.carPartRepository = carPartRepository;
   }
 
   public List<CarPart> getCarPartsByCrtNoList() {

@@ -1,5 +1,7 @@
 package org.example.config.ui;
 
+import org.example.repository.ClientRepository;
+import org.example.repository.OfferRepository;
 import org.example.service.OfferService;
 import org.example.service.ClientService;
 import org.example.ui.PassToBackend;
@@ -31,9 +33,9 @@ public class UserConsoleConfiguration {
     // EXIT_COMMAND
     result.put(getExitCommand(), session -> System.out.println("Exiting..."));
     // builds an offer for an existing client with existing parts establishing an amount or a discount
-    result.put(new Command("makeOffer"), session -> new OfferService(session).makeOffer());
+    result.put(new Command("makeOffer"), session -> new OfferService(new OfferRepository(session)).makeOffer());
     // self-explanatory
-    result.put(new Command("showClientOffers"), session -> new ClientService(session).showClientOffers());
+    result.put(new Command("showClientOffers"), session -> new ClientService(new ClientRepository(session)).showClientOffers());
     // self-explanatory
     result.put(new Command("help"), session -> UserConsole.getInstance().showHelp());
     //

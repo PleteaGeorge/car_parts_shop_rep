@@ -3,18 +3,15 @@ package org.example.service;
 import org.example.repository.ClientRepository;
 import org.example.repository.entities.Client;
 import org.example.ui.UserConsole;
-import org.hibernate.Session;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ClientService {
   private final ClientRepository clientRepository;
-  private final Session session;
 
-  public ClientService(Session session) {
-    this.session = session;
-    clientRepository = new ClientRepository(session);
+  public ClientService(ClientRepository clientRepository) {
+    this.clientRepository = clientRepository;
   }
 
   public void showClientOffers() {

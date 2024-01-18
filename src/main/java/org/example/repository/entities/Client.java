@@ -22,8 +22,7 @@ public class Client {
   private String name;
   @NonNull
   private String phoneNumber;
-  @OneToMany
-  @JoinColumn(name = "client_id")
+  @OneToMany(mappedBy = "client")
   private final List<Offer> offers = new ArrayList<>();
 
   @Override

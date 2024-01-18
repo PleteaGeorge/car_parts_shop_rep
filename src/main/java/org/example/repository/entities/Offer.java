@@ -21,7 +21,7 @@ public class Offer {
   @Id
   @GeneratedValue
   private UUID id;
-  private Date date;
+  //  private Date date;
   @NonNull
   private Double amount;
   @ManyToMany
@@ -31,6 +31,9 @@ public class Offer {
     inverseJoinColumns = @JoinColumn(name = "car_part_id")
   )
   private final List<CarPart> carParts = new ArrayList<>();
+  @ManyToOne
+  @JoinColumn(name = "client_id")
+  private Client client;
 
   @Override
   public String toString() {
