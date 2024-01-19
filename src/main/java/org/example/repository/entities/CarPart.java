@@ -26,4 +26,9 @@ public class CarPart {
   @ManyToOne
   @JoinColumn(name = "car_id")
   private Car car;
+
+  @Override
+  public String toString() {
+    return name.toString() + " for " + car.toString() + " (OE No. " + oeNumber + ")";
+  }
 }
