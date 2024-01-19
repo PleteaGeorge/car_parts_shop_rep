@@ -10,8 +10,6 @@ import org.example.utils.OfferUtility;
 import org.example.utils.printed_entities_format.PrintedEntitiesFormat;
 
 import java.text.DecimalFormat;
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -62,7 +60,6 @@ public class OfferService {
         break;
       }
       if (SUBMIT.equalsIgnoreCase(answer)) {
-//        offer.setDate(Date.from(Instant.now()));
         offerRepository.insert(offer);
         break;
       }
