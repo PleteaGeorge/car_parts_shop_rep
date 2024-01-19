@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.repository.ClientRepository;
+import org.example.repository.OfferRepository;
 import org.example.repository.entities.Client;
 import org.example.ui.UserConsole;
 
@@ -24,7 +25,10 @@ public class ClientService {
       return;
     }
     System.out.println("offer(s):");
-    client.getOffers().forEach(System.out::println);
+    client.getOffers().forEach(offer ->
+      System.out.println(new OfferService(new OfferRepository(clientRepository.getSession()))
+        .getPrinted(offer, 2))
+    );
     System.out.println("======   end [" + client.getName() + "] offer(s)");
   }
 

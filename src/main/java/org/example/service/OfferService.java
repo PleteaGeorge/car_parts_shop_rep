@@ -46,7 +46,7 @@ public class OfferService {
       );
       boolean byAmount = UserConsole.getInstance().getScanner().nextLine().trim().equals(SET_BY_AMOUNT);
       // choose amount/discount with respect to previous action
-      System.out.print("Set " + (byAmount? "amount ( $ )": "discount ( % )") + ": ");
+      System.out.print("Set " + (byAmount ? "amount ( $ )" : "discount ( % )") + ": ");
       offer.setAmount(Double.parseDouble(UserConsole.getInstance().getScanner().nextLine()));
       if (!byAmount) {
         offer.setAmount(OfferUtility.getAmount(
@@ -54,8 +54,7 @@ public class OfferService {
         ));
       }
       // show the offer
-      System.out.println("Client: " + offer.getClient());
-      System.out.println(getPrinted(offer, 2));
+      System.out.println(getPrintedWithClient(offer));
       // choose to submit, modify or abort
       System.out.print("Submit, Modify, Abort ? ( " + SUBMIT + " / [" + MODIFY + "] / " + ABORT + " ): ");
       String answer = UserConsole.getInstance().getScanner().nextLine().trim();
@@ -76,7 +75,7 @@ public class OfferService {
     List<CarPart> carParts = offer.getCarParts();
     String indent = PrintedEntitiesFormat.getIndent(numberOfSpacesToIndent);
     StringBuilder result = new StringBuilder(indent
-      + "Offer {" + ((null == id)? "not yet an offer": id.toString()) + "}:"
+      + "Offer {" + ((null == id) ? "not yet an offer" : id.toString()) + "}:"
       + PrintedEntitiesFormat.END_LINE
     );
     carParts.forEach(
@@ -90,5 +89,10 @@ public class OfferService {
       .append("  amount: $").append(decimalFormat.format(offer.getAmount()))
       .append("  discount: ").append(decimalFormat.format(OfferUtility.getDiscount(offer))).append(" %")
       .toString();
+  }
+
+  public String getPrintedWithClient(Offer offer) {
+    return "Client: " + offer.getClient() + PrintedEntitiesFormat.END_LINE
+      + getPrinted(offer, 0);
   }
 }

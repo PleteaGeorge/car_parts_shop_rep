@@ -52,6 +52,7 @@ public class UserConsole {
 
   public static void run(Session session) {
     getInstance().execute(session);
+    getInstance().scanner.close();
   }
 
   public void execute(Session session) {
