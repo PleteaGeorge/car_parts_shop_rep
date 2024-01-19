@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.example.utils.OfferUtility;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,17 +32,4 @@ public class Offer {
   @ManyToOne
   @JoinColumn(name = "client_id")
   private Client client;
-
-  @Override
-  public String toString() {
-    StringBuilder result = new StringBuilder("Offer {");
-    result.append((null == id) ? "not yet an offer" : id.toString()).append("}:\n");
-    carParts.forEach(carPart -> result.append("    ").append(carPart.toString()).append("\n"));
-    DecimalFormat decimalFormat = new DecimalFormat("0.00");
-    return result
-      .append("  total amount: $").append(decimalFormat.format(OfferUtility.getTotalAmount(carParts)))
-      .append("  amount: $").append(decimalFormat.format(amount))
-      .append("  discount: ").append(decimalFormat.format(OfferUtility.getDiscount(this))).append(" %")
-      .toString();
-  }
 }

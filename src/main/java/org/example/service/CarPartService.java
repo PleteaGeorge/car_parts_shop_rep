@@ -27,4 +27,12 @@ public class CarPartService {
     return Arrays.stream(UserConsole.getInstance().getScanner().nextLine().replaceAll("\\s", "").split(","))
       .map(Integer::parseInt).map(map::get).toList();
   }
+
+  public void showCarPart(CarPart carPart) {
+    System.out.println(
+      carPart.getName().toString()
+        + " for " + carPart.getCar().toString()
+        + " (OE No. " + carPart.getOeNumber() + ")"
+    );
+  }
 }
