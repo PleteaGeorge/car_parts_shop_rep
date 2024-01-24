@@ -41,9 +41,4 @@ public class OfferUtilityTest {
     Double amount = OfferUtility.getAmount(total, discount);
     assertEquals(80., amount, 1e-15);
   }
-
-  @Test
-  public void dateConverterTest() {
-    assertTrue(true);
-  }
 }
